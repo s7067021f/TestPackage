@@ -1,0 +1,56 @@
+TO CREATE CLASSES IN A DIFFERENT DIRECTORY:
+From the source directory:
+    javac -d ../classes *.java
+means "compile all the java files in the current source directory, and put the resulting class
+files one directory level up (the ../) and then in the classes directory"
+
+**think of the -d as being "destination directory" for the class files which are created
+**when you javac (compile)
+
+THEN TO CREATE AN EXECUTABLE JAR FILE:
+Create a manifest.txt (or manifest.mf) file in the classes directory with
+Main-Class: MyApp ("MyApp" is the file with the main method. Rem to press the return key to create
+a new line)
+
+TO CREATE THE JAR FILE:
+From the classes directory:
+ jar -cvmf manifest.txt app1.jar *.class
+ 
+TO THEN RUN THE EXECUTABLE JAR FILE:
+From the classes directory:
+ java -jar app1.jar
+
+(the -jar flag tells JVM you're giving it a JAR instead of a class)
+
+--------------
+
+TO USE A PACKAGE, AND HAVE SEPARATE CLASS AND SOURCE FILES, AND A RUNABLE JAR FILE:
+Create the directory for your source (java) code e.g. src\com\yyy\
+So with this example, the package is com.yyy (so package com.yyy; at top of all java files)
+Create a java file e.g. Circle.java with "Hello muppets"
+From the src directory (stay in source!) type
+    javac -d ../classes/ com/yyy/*.java
+This cooly will create the com/yyy folders underneath the classes directory, and put the Circle.class
+there. Note that the "*.java" bit just means compile all the java files found there.
+To run the code, do so from the classes directory:
+    java com.yyy.Circle (ie MUST give the fully qualified class name)
+
+HOW TO NAVIGATE DIRECTORIES:
+cd ../ -> go up one level
+cd ../cl then "tab" will create cd ../classes -> go up one level, then back down into "classes"!
+
+CHANGE THE MANIFEST.TXT TO HAVE THE FULLY-QUALIFIED CLASS NAME:
+    Main-Class: com.yyy.Circle
+Then in the classes directory:
+    jar -cvmf manifest.txt app2.jar com
+All I specify is "com" and i get everything in it!
+
+WHAT'S IN THE JAR FILE?
+From the directory where the JAR file is:
+    jar -tf app2.jar (tf for table file. app2 is the name of JAR file in this example)
+This will list the files in the JAR
+Or:
+    jar -xf app2.jar (extract file)
+This will extract out all the files into their directories.
+.
+
