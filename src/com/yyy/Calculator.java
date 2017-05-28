@@ -1,7 +1,9 @@
 package com.yyy;
 
-public class Circle {
-    public static void main (String[] args){
+public class Calculator {
+    
+    public void go() {
         System.out.println("Hello muppets!");
     }
+
 }
