@@ -1,3 +1,5 @@
+!!First connection from codenvy to github!
+
 TO CREATE CLASSES IN A DIFFERENT DIRECTORY:
 From the source directory:
     javac -d ../classes *.java
